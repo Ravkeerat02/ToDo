@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 //middleware packages
 const morgan = require('morgan');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 const router = require('./router');
 
@@ -18,9 +19,12 @@ app.use(morgan('tiny'));
 
 app.use(router)
 
+mongoose.connect(process.env.MONGO_URI).then(() =>{
+    console.log('connected to mongo')
+    app.listen(8080);
+})
 
 
-app.listen(8080);
 
 
 
