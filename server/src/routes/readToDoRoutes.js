@@ -1,6 +1,6 @@
-const TodoModel = require('../models/TodoModel');
+const ToDoModel = require('../models/ToDoModel');
 
 module.exports = async (req, res) => {
-  const todos = await TodoModel.find();
+  const todos = await ToDoModel.find();
   res.json(todos);
 }

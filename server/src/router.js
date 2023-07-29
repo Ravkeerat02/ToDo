@@ -1,5 +1,4 @@
 const express = require('express');
-// const isLoggedIn = require('./middleware/isLoggedIn');
 
 const updateToDoRoutes = require('./routes/updateToDoRoute');
 const createToDoRoutes = require('./routes/createToDoRoute');
