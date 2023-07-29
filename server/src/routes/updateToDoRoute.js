@@ -10,20 +10,22 @@ module.exports = async (req, res) => {
     // Find the Todo item by its id
     const todo = await ToDoModel.findById(id);
 
+    console.log('Existing Todo:', todo);
+
     if (!todo) {
       return res.status(404).json({ error: 'Todo not found' });
     }
-
-    console.log('Existing Todo:', todo);
 
     // Update the Todo item with the new values
     todo.text = text;
     todo.completed = completed;
 
+    console.log('Updated Todo:', todo);
+
     // Save the updated Todo item
     const updatedTodo = await todo.save();
 
-    console.log('Updated Todo:', updatedTodo);
+    console.log('Saved Updated Todo:', updatedTodo);
 
     res.json(updatedTodo);
   } catch (error) {
