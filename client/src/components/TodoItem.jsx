@@ -64,7 +64,7 @@ export const TodoItem = ({ todo }) => {
         justifyContent: 'center',
       }}
     >
-      <input
+      {/* <input
         checked={todo.completed}
         type="checkbox"
         style={{
@@ -78,7 +78,7 @@ export const TodoItem = ({ todo }) => {
             completed: !todo.completed,
           })
         }
-      />
+      /> */}
 
       <input
         style={{
@@ -101,7 +101,7 @@ export const TodoItem = ({ todo }) => {
         }}
         onClick={() => deleteTodo(todo)}
       >
-        delete
+        Delete
       </button>
     </div>
   );

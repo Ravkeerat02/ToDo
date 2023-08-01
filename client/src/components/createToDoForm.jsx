@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import createTodoRequest from '../api/createToDoRequests';
 import { TokenContext } from '../App';
+import '../App.css'
 
 export const CreateTodoForm = () => {
   const [text, setText] = useState('');
@@ -50,6 +51,11 @@ export const CreateTodoForm = () => {
       >
         Create
       </button>
+      <br />
+      <time className="time">{new Date().toLocaleTimeString()}</time>
+      <br />
+        <br />
+      <a href = "./login">Back to login</a>
     </form>
   );
 };

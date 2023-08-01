@@ -1,18 +1,27 @@
-const API_URL = 'http://localhost:8080'
-
-//promose - used to run the .then function
+import { API_URL } from './config';
 
 export default (todo) => {
-    return fetch(`${API_URL}/todos/${todo._id}`,{
-        method: 'GET',
-        headers: {
-            // Authorization : `Bearer `
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            text: todo.text,
-            completed: todo.completed
-        })
+    const url = `${API_URL}/todos/${todo._id}`;
+  
+    return fetch(url, {
+      method: 'PATCH', // or 'PUT' if your API requires it
+      headers: {
+        'Authorization': `Bearer YOUR_ACCESS_TOKEN`, // Add your access token here
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: todo.text,
+        completed: todo.completed,
+      }),
     })
-    .then(res => res.json())
-}
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to update todo');
+        }
+        return res.json();
+      })
+      .catch((error) => {
+        console.error(error);
+        throw error;
+      });
+  };

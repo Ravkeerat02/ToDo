@@ -3,6 +3,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { LoginPage } from './pages/LoginPage';
 import { TodoPage } from './pages/TodoPage';
+import {UpdateItem} from './pages/UpdateItem';
+
 
 export const TokenContext = React.createContext(null);
 
@@ -21,8 +23,11 @@ function App() {
           <Route
             path="/"
             element={<ProtectedRoute element={TodoPage} />}
+
           />
+           <Route path="/update/:id" component={UpdateItem} />
           <Route path="login" element={<LoginPage />} />
+          
         </Routes>
       </TokenContext.Provider>
     </div>

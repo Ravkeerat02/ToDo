@@ -27,12 +27,18 @@ export const LoginPage = () => {
       <div style={{ color: 'red' }}>{error}</div>
       <form onSubmit={handleLogin}>
         <input
-          type="password"
+          type="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
+          placeholder="Enter Password"
+          autoComplete="off"
         />
+        <br />
+        <br />
         <button>Login</button>
       </form>
+      
     </div>
   );
 };
