@@ -7,7 +7,7 @@
 -  Mongo Db
 
 ### Features Include
-- Create item - implemneted
+- Create item - implemeneted
 - Update item - work in progress
 - Delete - implemented
 - Read item - implemented
