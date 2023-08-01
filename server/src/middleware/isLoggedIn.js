@@ -1,19 +1,18 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
-
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    res.status(401).json({ message: "Auth Error" });
+    res.status(401).send('invalid credentials');
   } else {
     const token = authHeader.split(' ')[1];
     jwt.verify(token, process.env.SECRET, (err, decoded) => {
       if (err) {
-        return res.status(401).json({ message: "Token is not valid" });
+        res.status(403).send('invalid credentials');
       } else {
-        //req.userId = decoded.userId;
         next();
       }
     });
   }
+}
 };
