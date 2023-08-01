@@ -54,7 +54,6 @@ export const TodoItem = ({ todo }) => {
       debouncedUpdateTodo.cancel(); // Clean up the debounced function on unmount
     };
   }, []);
-
   return (
     <div
       style={{
@@ -79,7 +78,7 @@ export const TodoItem = ({ todo }) => {
           })
         }
       /> */}
-
+  
       <input
         style={{
           padding: '8px',
@@ -89,15 +88,17 @@ export const TodoItem = ({ todo }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-
+  
       <button
         style={{
-          padding: '5px',
-          height: '35px',
+          padding: '10px 30px',
+          height: '40px',
           outline: 'none',
           border: 'none',
           color: 'white',
           backgroundColor: '#cc5a5a',
+          borderRadius: '20px',
+          cursor: 'pointer',
         }}
         onClick={() => deleteTodo(todo)}
       >
@@ -105,4 +106,5 @@ export const TodoItem = ({ todo }) => {
       </button>
     </div>
   );
-};
+      }
+      

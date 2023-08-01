@@ -39,18 +39,20 @@ export const CreateTodoForm = () => {
           marginRight: '6px',
         }}
       />
-      <button
-        style={{
-          padding: '5px',
-          height: '35px',
-          outline: 'none',
-          border: 'none',
-          color: 'white',
-          backgroundColor: '#00c348',
-        }}
-      >
-        Create
-      </button>
+     <button
+  style={{
+    padding: '10px 30px',
+    height: '40px', // Changed height to make the button more visible
+    outline: 'none',
+    border: 'none',
+    color: 'white',
+    backgroundColor: '#00c348',
+    borderRadius: '20px',
+    cursor: 'pointer',
+  }}
+>
+  Create
+</button>
       <br />
       <time className="time">{new Date().toLocaleTimeString()}</time>
       <br />

@@ -2,6 +2,17 @@ import { useContext, useState } from 'react';
 import loginRequest from '../api/loginRequest';
 import { useNavigate } from 'react-router-dom';
 import { TokenContext } from '../App';
+import '../App';
+/*
+
+Ideas to implement
+- Displaying quote 
+- Improving styling
+- Adding(making it work) update featrue
+
+
+*/
+
 
 export const LoginPage = () => {
   const [password, setPassword] = useState('');
@@ -27,6 +38,7 @@ export const LoginPage = () => {
       <div style={{ color: 'red' }}>{error}</div>
       <form onSubmit={handleLogin}>
         <input
+          className='login-input'
           type="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
