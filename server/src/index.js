@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const router = require('./router');
 
 
-
 dotenv.config();
 const app = express();
 //middleware
