@@ -1,17 +1,15 @@
-import { useCallback, useState, useEffect, useContext } from 'react';
-import { useQueryClient, useMutation } from 'react-query';
+import { useCallback, useState, useEffect, useContext } from "react";
+import { useQueryClient, useMutation } from "react-query";
 
-import deleteTodoRequest from '../api/deleteToDoRequests';
-import updateTodoRequest from '../api/updateToDoRequests';
+import deleteTodoRequest from "../api/deleteToDoRequests";
+import updateTodoRequest from "../api/updateToDoRequests";
 
-import { debounce } from 'lodash';
-import { TokenContext } from '../App';
-import PropTypes from 'prop-types'; // Import prop-types
-
+import { debounce } from "lodash";
+import { TokenContext } from "../App";
+import PropTypes from "prop-types"; // Import prop-types
 
 export const TodoItem = ({ todo }) => {
-
-    // Add prop type validation for the 'todo' prop
+  // Add prop type validation for the 'todo' prop
   TodoItem.propTypes = {
     todo: PropTypes.shape({
       text: PropTypes.string.isRequired,
@@ -19,8 +17,7 @@ export const TodoItem = ({ todo }) => {
       createdAt: PropTypes.string.isRequired,
     }).isRequired,
   };
-  
-  
+
   const [text, setText] = useState(todo.text);
   const [token] = useContext(TokenContext);
 
@@ -30,7 +27,7 @@ export const TodoItem = ({ todo }) => {
     (updatedTodo) => updateTodoRequest(updatedTodo, token),
     {
       onSettled: () => {
-        queryClient.invalidateQueries('todos');
+        queryClient.invalidateQueries("todos");
       },
     }
   );
@@ -39,15 +36,14 @@ export const TodoItem = ({ todo }) => {
     (updatedTodo) => deleteTodoRequest(updatedTodo, token),
     {
       onSettled: () => {
-        queryClient.invalidateQueries('todos');
+        queryClient.invalidateQueries("todos");
       },
     }
   );
 
-  const debouncedUpdateTodo = useCallback(
-    debounce(updateTodo, 600),
-    [updateTodo]
-  );
+  const debouncedUpdateTodo = useCallback(debounce(updateTodo, 600), [
+    updateTodo,
+  ]);
 
   useEffect(() => {
     return () => {
@@ -57,19 +53,19 @@ export const TodoItem = ({ todo }) => {
   return (
     <div
       style={{
-        marginBottom: '6px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        marginBottom: "6px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
-      {/* <input
+      <input
         checked={todo.completed}
         type="checkbox"
         style={{
-          marginRight: '5px',
-          height: '34px',
-          width: '34px',
+          marginRight: "5px",
+          height: "34px",
+          width: "34px",
         }}
         onChange={() =>
           updateTodo({
@@ -77,28 +73,28 @@ export const TodoItem = ({ todo }) => {
             completed: !todo.completed,
           })
         }
-      /> */}
-  
+      />
+
       <input
         style={{
-          padding: '8px',
-          marginRight: '6px',
+          padding: "8px",
+          marginRight: "6px",
         }}
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-  
+
       <button
         style={{
-          padding: '10px 30px',
-          height: '40px',
-          outline: 'none',
-          border: 'none',
-          color: 'white',
-          backgroundColor: '#cc5a5a',
-          borderRadius: '20px',
-          cursor: 'pointer',
+          padding: "10px 30px",
+          height: "40px",
+          outline: "none",
+          border: "none",
+          color: "white",
+          backgroundColor: "#cc5a5a",
+          borderRadius: "20px",
+          cursor: "pointer",
         }}
         onClick={() => deleteTodo(todo)}
       >
@@ -106,5 +102,4 @@ export const TodoItem = ({ todo }) => {
       </button>
     </div>
   );
-      }
-      
+};
