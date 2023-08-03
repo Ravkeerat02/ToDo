@@ -30,7 +30,7 @@ const TodoSchema = new mongoose.Schema({
   },
   priority: {
     type: String,
-    default: "low",
+    default: "Low",
     enum: ["High", "Medium", "Low"],
   },
 });
